@@ -154,6 +154,15 @@ Answer each with a number, or say "defaults".
 10. **Network during development (C4/C5).** **Default:** yes, for dev tooling only. That covers Google Fonts' OFL sources for Baloo 2 and Nunito (P01), NuGet and pip packages, Google's target-API page (P01), and model downloads into a cache outside the repo (P05). Every item is pinned and licence-checked into `ThirdPartyNotices.md`. The game itself never makes network calls.
 11. **Python for tooling (C7).** **Default:** `Tools/BakeOff` and `Tools/Content` use a **Python 3.12** venv (`py -3.12 -m venv`, Windows `Scripts\` layout, documented in each README). P03's pure-Python golden tests also run on 3.14.
 
+### Jamie's answers (2026-10-10)
+**"Defaults" for all of Q1–Q11.** The Unity version has been changed to LTS. As verified after the answer:
+- **6000.3.26f1** (revision `de8167e7440c`) is installed at `C:\Program Files\Unity\Hub\Editor\6000.3.26f1\Editor\Unity.exe`.
+- Android Build Support is present: SDK platforms 34/35/36/37.0, NDK `27.2.12479018`, OpenJDK `17.0.18`.
+- `ProjectSettings/ProjectVersion.txt` now reads `6000.3.26f1`.
+- Opening the project in 6000.3.26f1 left **uncommitted** changes in `ProjectVersion.txt`, `packages-lock.json`, `EditorBuildSettings.asset`, `PackageManagerSettings.asset` and `UniversalRenderPipelineGlobalSettings.asset`. P01 owns these, as part of rebuilding from the Universal 2D template under Q2.
+- `UNITY_PATH` was **still unset** at the time of this note.
+- No answer to Q9 (Flutter bullets), so Master §38 stays as it is and P14 flags it.
+
 ## For the next prompt
 Things you need to do before P01:
 - Answer the questions above (or say "defaults").

@@ -1,0 +1,21 @@
+{
+    "name": "SpeakBack.EditorTools",
+    "rootNamespace": "Uprise.SpeakBack.EditorTools",
+    "references": [
+        "SpeakBack.Core",
+        "SpeakBack.Runtime",
+        "Unity.TextMeshPro",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

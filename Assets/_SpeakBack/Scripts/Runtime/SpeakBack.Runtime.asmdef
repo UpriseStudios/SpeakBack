@@ -1,0 +1,17 @@
+{
+    "name": "SpeakBack.Runtime",
+    "rootNamespace": "Uprise.SpeakBack",
+    "references": [
+        "SpeakBack.Core",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

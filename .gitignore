@@ -73,3 +73,17 @@ speakback-bakeoff/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Python tooling (Tools/BakeOff, Tools/Content)
+**/.venv/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+
+# dotnet test output
+**/TestResults/
+
+# Unity misc
+/[Ee]xportedObj/
+.utmp/
+*.apk.*

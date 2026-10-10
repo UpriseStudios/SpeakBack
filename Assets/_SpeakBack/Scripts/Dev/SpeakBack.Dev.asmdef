@@ -1,0 +1,19 @@
+{
+    "name": "SpeakBack.Dev",
+    "rootNamespace": "Uprise.SpeakBack.Dev",
+    "references": [
+        "SpeakBack.Core",
+        "SpeakBack.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "SPEAKBACK_DEV"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

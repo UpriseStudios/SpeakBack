@@ -1,0 +1,54 @@
+{
+  "version": "golden-verdict-v1",
+  "thresholds": {
+    "Perfect": 90,
+    "Great": 75,
+    "Close": 50
+  },
+  "invalidScores": [
+    -1,
+    101
+  ],
+  "cases": [
+    {
+      "score": 0,
+      "expectedVerdict": "TryAgain"
+    },
+    {
+      "score": 1,
+      "expectedVerdict": "TryAgain"
+    },
+    {
+      "score": 49,
+      "expectedVerdict": "TryAgain"
+    },
+    {
+      "score": 50,
+      "expectedVerdict": "Close"
+    },
+    {
+      "score": 74,
+      "expectedVerdict": "Close"
+    },
+    {
+      "score": 75,
+      "expectedVerdict": "Great"
+    },
+    {
+      "score": 89,
+      "expectedVerdict": "Great"
+    },
+    {
+      "score": 90,
+      "expectedVerdict": "Perfect"
+    },
+    {
+      "score": 99,
+      "expectedVerdict": "Perfect"
+    },
+    {
+      "score": 100,
+      "expectedVerdict": "Perfect"
+    }
+  ]
+}

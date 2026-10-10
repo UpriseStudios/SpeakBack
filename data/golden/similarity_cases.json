@@ -1,0 +1,251 @@
+{
+  "version": "golden-similarity-v1",
+  "formula": "D = Levenshtein over tokens (insert/delete/substitute = 1); N = len(target); score = D >= N ? 0 : (200*(N-D)+N) / (2*N) using integer division",
+  "errorCases": [
+    {
+      "name": "empty_target",
+      "target": [],
+      "observed": [
+        "a"
+      ],
+      "expectedError": "EmptyTarget"
+    }
+  ],
+  "cases": [
+    {
+      "name": "identical_words",
+      "target": [
+        "blue",
+        "banana"
+      ],
+      "observed": [
+        "blue",
+        "banana"
+      ],
+      "expectedDistance": 0,
+      "expectedScore": 100
+    },
+    {
+      "name": "empty_observed",
+      "target": [
+        "blue",
+        "banana"
+      ],
+      "observed": [],
+      "expectedDistance": 2,
+      "expectedScore": 0
+    },
+    {
+      "name": "one_word_missing",
+      "target": [
+        "blue",
+        "banana"
+      ],
+      "observed": [
+        "blue"
+      ],
+      "expectedDistance": 1,
+      "expectedScore": 50
+    },
+    {
+      "name": "reordered_words",
+      "target": [
+        "blue",
+        "banana"
+      ],
+      "observed": [
+        "banana",
+        "blue"
+      ],
+      "expectedDistance": 2,
+      "expectedScore": 0
+    },
+    {
+      "name": "five_words_one_substitution",
+      "target": [
+        "never",
+        "trust",
+        "a",
+        "talking",
+        "penguin"
+      ],
+      "observed": [
+        "never",
+        "trust",
+        "the",
+        "talking",
+        "penguin"
+      ],
+      "expectedDistance": 1,
+      "expectedScore": 80
+    },
+    {
+      "name": "insertion_extra_token",
+      "target": [
+        "b",
+        "l",
+        "uː"
+      ],
+      "observed": [
+        "b",
+        "l",
+        "uː",
+        "z"
+      ],
+      "expectedDistance": 1,
+      "expectedScore": 67
+    },
+    {
+      "name": "deletion_one_of_four",
+      "target": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "observed": [
+        "a",
+        "b",
+        "d"
+      ],
+      "expectedDistance": 1,
+      "expectedScore": 75
+    },
+    {
+      "name": "phoneme_one_substitution_n9",
+      "target": [
+        "b",
+        "l",
+        "uː",
+        "b",
+        "ə",
+        "n",
+        "ɑː",
+        "n",
+        "ə"
+      ],
+      "observed": [
+        "b",
+        "l",
+        "uː",
+        "b",
+        "ə",
+        "n",
+        "æ",
+        "n",
+        "ə"
+      ],
+      "expectedDistance": 1,
+      "expectedScore": 89
+    },
+    {
+      "name": "rounding_half_up_n8",
+      "target": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h"
+      ],
+      "observed": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "X"
+      ],
+      "expectedDistance": 1,
+      "expectedScore": 88
+    },
+    {
+      "name": "many_extras_clamp_zero",
+      "target": [
+        "a"
+      ],
+      "observed": [
+        "x",
+        "y",
+        "z"
+      ],
+      "expectedDistance": 3,
+      "expectedScore": 0
+    },
+    {
+      "name": "all_substituted",
+      "target": [
+        "a",
+        "b",
+        "c"
+      ],
+      "observed": [
+        "x",
+        "y",
+        "z"
+      ],
+      "expectedDistance": 3,
+      "expectedScore": 0
+    },
+    {
+      "name": "two_of_seven_wrong",
+      "target": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g"
+      ],
+      "observed": [
+        "a",
+        "b",
+        "X",
+        "d",
+        "e",
+        "Y",
+        "g"
+      ],
+      "expectedDistance": 2,
+      "expectedScore": 71
+    },
+    {
+      "name": "long_n12_three_errors",
+      "target": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l"
+      ],
+      "observed": [
+        "a",
+        "b",
+        "X",
+        "d",
+        "e",
+        "f",
+        "Y",
+        "h",
+        "i",
+        "Z",
+        "k",
+        "l"
+      ],
+      "expectedDistance": 3,
+      "expectedScore": 75
+    }
+  ]
+}

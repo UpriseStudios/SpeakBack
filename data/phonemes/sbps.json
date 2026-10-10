@@ -1,0 +1,158 @@
+{
+  "version": "sbps-v1",
+  "name": "SpeakBack Phone Set",
+  "locale": "en-GB",
+  "description": "Canonical phoneme inventory for SpeakBack content (D-011). 44 broad British English IPA symbols. Phrase content is stored in SBPS; each recogniser gets its own mapping table into SBPS. Multi-character symbols (tʃ, dʒ, iː, aɪ …) are single tokens.",
+  "consonants": [
+    "p",
+    "b",
+    "t",
+    "d",
+    "k",
+    "ɡ",
+    "f",
+    "v",
+    "θ",
+    "ð",
+    "s",
+    "z",
+    "ʃ",
+    "ʒ",
+    "h",
+    "tʃ",
+    "dʒ",
+    "m",
+    "n",
+    "ŋ",
+    "l",
+    "r",
+    "w",
+    "j"
+  ],
+  "vowels": [
+    "ɪ",
+    "e",
+    "æ",
+    "ʌ",
+    "ɒ",
+    "ʊ",
+    "ə",
+    "iː",
+    "ɑː",
+    "ɔː",
+    "uː",
+    "ɜː",
+    "eɪ",
+    "aɪ",
+    "ɔɪ",
+    "əʊ",
+    "aʊ",
+    "ɪə",
+    "eə",
+    "ʊə"
+  ],
+  "normalisation": {
+    "stripMarks": [
+      "ˈ",
+      "ˌ",
+      "̩",
+      "ʰ",
+      "̃"
+    ],
+    "dropTokens": [
+      "sil",
+      "sp",
+      "spn",
+      "<pad>",
+      "<unk>",
+      "|"
+    ],
+    "note": "Silence/pad tokens are dropped and stress/diacritic marks stripped before scoring. Length (ː) is part of SBPS symbols and is never stripped; engines without length distinctions map through their table."
+  },
+  "mappings": {
+    "arpabet": {
+      "version": "arpabet-to-sbps-v1",
+      "note": "ARPAbet/CMUdict is US English. AA covers both ɑː and ɒ, and rhotic ER cannot express British non-rhotic vowels, so every mapped phrase needs UK review. Stress digits: AH0→ə, ER0→ə; strip other digits before lookup.",
+      "table": {
+        "AA": "ɑː",
+        "AE": "æ",
+        "AH": "ʌ",
+        "AH0": "ə",
+        "AO": "ɔː",
+        "AW": "aʊ",
+        "AY": "aɪ",
+        "EH": "e",
+        "ER": "ɜː",
+        "ER0": "ə",
+        "EY": "eɪ",
+        "IH": "ɪ",
+        "IY": "iː",
+        "OW": "əʊ",
+        "OY": "ɔɪ",
+        "UH": "ʊ",
+        "UW": "uː",
+        "B": "b",
+        "CH": "tʃ",
+        "D": "d",
+        "DH": "ð",
+        "F": "f",
+        "G": "ɡ",
+        "HH": "h",
+        "JH": "dʒ",
+        "K": "k",
+        "L": "l",
+        "M": "m",
+        "N": "n",
+        "NG": "ŋ",
+        "P": "p",
+        "R": "r",
+        "S": "s",
+        "SH": "ʃ",
+        "T": "t",
+        "TH": "θ",
+        "V": "v",
+        "W": "w",
+        "Y": "j",
+        "Z": "z",
+        "ZH": "ʒ"
+      }
+    }
+  },
+  "equivalenceCandidates": {
+    "note": "Not used in Phase 1 scoring (unit costs only). Candidate near-equivalents for a later weighted-cost scorer, to be validated by bake-off data.",
+    "pairs": [
+      [
+        "ɒ",
+        "ɑː"
+      ],
+      [
+        "ʌ",
+        "ə"
+      ],
+      [
+        "ɪ",
+        "iː"
+      ],
+      [
+        "ʊ",
+        "uː"
+      ],
+      [
+        "ɜː",
+        "ə"
+      ],
+      [
+        "θ",
+        "f"
+      ],
+      [
+        "ð",
+        "v"
+      ],
+      [
+        "e",
+        "æ"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "version": "uprise-phase1-v1",
+  "speaker": "uprise",
+  "layer": "A",
+  "notes": [
+    "Phase 1 text-only reactions (Bible §7.1). Dry, warm, witty; notices improvement more than score; never stern or mocking.",
+    "No lore, Cora or relationship content. No immediate repeats (cooldown 5 eligible reactions per pool where pool size allows).",
+    "Expressions: neutral, listening, thinking, restrained_smile, amused, surprised, dry_concern.",
+    "Selection order: error → valid_zero (score 0) → improvement (retry on same phrase with score up ≥10 and verdict not lower) → verdict pool."
+  ],
+  "expressionsByState": {
+    "idle": "neutral",
+    "playingPrompt": "listening",
+    "recording": "listening",
+    "processing": "thinking",
+    "scoring": "thinking"
+  },
+  "onboarding": [
+    {
+      "id": "onb_1",
+      "text": "I'm Uprise. I'll play you something backwards.",
+      "expression": "neutral",
+      "weight": 1
+    },
+    {
+      "id": "onb_2",
+      "text": "You copy it — exactly as it sounds, nonsense and all.",
+      "expression": "amused",
+      "weight": 1
+    },
+    {
+      "id": "onb_3",
+      "text": "Then I flip you round, and we find out what you really said.",
+      "expression": "restrained_smile",
+      "weight": 1
+    }
+  ],
+  "pools": {
+    "perfect": [
+      {
+        "id": "p1",
+        "text": "Well. That's inconvenient. I had a very good encouraging speech prepared.",
+        "expression": "restrained_smile",
+        "weight": 1
+      },
+      {
+        "id": "p2",
+        "text": "Perfectly backwards. I'll be checking the recording for witchcraft.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "p3",
+        "text": "That's the one. I'm not going to make a fuss. I'm making a small fuss.",
+        "expression": "restrained_smile",
+        "weight": 1
+      },
+      {
+        "id": "p4",
+        "text": "Clean. I didn't expect clean.",
+        "expression": "surprised",
+        "weight": 1
+      },
+      {
+        "id": "p5",
+        "text": "I've filed that under 'things I'll pretend I predicted.'",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "p6",
+        "text": "Flawless. Do it again before it becomes a fluke.",
+        "expression": "restrained_smile",
+        "weight": 1
+      }
+    ],
+    "great": [
+      {
+        "id": "g1",
+        "text": "Close enough that I'm now suspicious you've been practising.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "g2",
+        "text": "Very nearly. One sound wandered off, but it came back.",
+        "expression": "restrained_smile",
+        "weight": 1
+      },
+      {
+        "id": "g3",
+        "text": "That was good. Annoyingly good.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "g4",
+        "text": "Most of that was English. The rest was enthusiasm.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "g5",
+        "text": "Strong. The ending just needs to believe in itself.",
+        "expression": "neutral",
+        "weight": 1
+      },
+      {
+        "id": "g6",
+        "text": "Nearly there. I could hear the phrase waving at me.",
+        "expression": "restrained_smile",
+        "weight": 1
+      }
+    ],
+    "close": [
+      {
+        "id": "c1",
+        "text": "You've got the shape of it. One more.",
+        "expression": "neutral",
+        "weight": 1
+      },
+      {
+        "id": "c2",
+        "text": "The rhythm's right. The words are still negotiating.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "c3",
+        "text": "I caught about half. The good half.",
+        "expression": "restrained_smile",
+        "weight": 1
+      },
+      {
+        "id": "c4",
+        "text": "It's in there. It just took the scenic route.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "c5",
+        "text": "Promising. Listen to the middle again.",
+        "expression": "neutral",
+        "weight": 1
+      },
+      {
+        "id": "c6",
+        "text": "Close. Try slowing the start down.",
+        "expression": "neutral",
+        "weight": 1
+      }
+    ],
+    "tryAgain": [
+      {
+        "id": "t1",
+        "text": "That was definitely backwards. Whether it belonged to this language is still under review.",
+        "expression": "dry_concern",
+        "weight": 1
+      },
+      {
+        "id": "t2",
+        "text": "Bold. Not accurate, but bold.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "t3",
+        "text": "I've heard worse. Mostly from myself, early on.",
+        "expression": "restrained_smile",
+        "weight": 1
+      },
+      {
+        "id": "t4",
+        "text": "Interesting choice of sounds. Let's try the ones in the phrase.",
+        "expression": "dry_concern",
+        "weight": 1
+      },
+      {
+        "id": "t5",
+        "text": "That reversed into something. We'll call it modern art.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "t6",
+        "text": "Listen once more and copy the shape, not the words.",
+        "expression": "neutral",
+        "weight": 1
+      }
+    ],
+    "validZero": [
+      {
+        "id": "z1",
+        "text": "Nothing matched. But it was a very confident nothing.",
+        "expression": "surprised",
+        "weight": 1
+      },
+      {
+        "id": "z2",
+        "text": "Zero. Impressive in its own way. Again?",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "z3",
+        "text": "That was a completely new phrase. Let's try the old one.",
+        "expression": "dry_concern",
+        "weight": 1
+      },
+      {
+        "id": "z4",
+        "text": "Not a single sound survived the trip. Brave little sounds.",
+        "expression": "amused",
+        "weight": 1
+      }
+    ],
+    "improvement": [
+      {
+        "id": "i1",
+        "text": "Better than last time. I noticed.",
+        "expression": "restrained_smile",
+        "weight": 1
+      },
+      {
+        "id": "i2",
+        "text": "That's progress. Small steps, backwards.",
+        "expression": "amused",
+        "weight": 1
+      },
+      {
+        "id": "i3",
+        "text": "Up from before. Keep that.",
+        "expression": "restrained_smile",
+        "weight": 1
+      },
+      {
+        "id": "i4",
+        "text": "You're getting the hang of this. Don't let it go to your head.",
+        "expression": "amused",
+        "weight": 1
+      }
+    ]
+  },
+  "errors": {
+    "permissionNeeded": {
+      "id": "e_perm",
+      "text": "I need the microphone to hear you. You can allow it in Settings.",
+      "expression": "neutral",
+      "weight": 1
+    },
+    "noVoice": {
+      "id": "e_novoice",
+      "text": "I didn't catch anything. Hold the button and speak up a little.",
+      "expression": "neutral",
+      "weight": 1
+    },
+    "tooShort": {
+      "id": "e_short",
+      "text": "That was very quick. Hold the button for the whole phrase.",
+      "expression": "neutral",
+      "weight": 1
+    },
+    "micUnavailable": {
+      "id": "e_mic",
+      "text": "I can't hear you yet. Check microphone access and try again.",
+      "expression": "neutral",
+      "weight": 1
+    },
+    "scoringFailed": {
+      "id": "e_scramble",
+      "text": "That one got scrambled. Give it another go?",
+      "expression": "neutral",
+      "weight": 1
+    }
+  }
+}

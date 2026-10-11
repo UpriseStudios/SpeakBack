@@ -4,6 +4,7 @@
     "references": [
         "SpeakBack.Core",
         "SpeakBack.Runtime",
+        "SpeakBack.Dev",
         "Unity.TextMeshPro",
         "Unity.InputSystem"
     ],

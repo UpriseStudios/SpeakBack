@@ -29,7 +29,16 @@ dotnet test Tools/DotnetTests
 adb install -r Builds/Android/SpeakBack-dev.apk
 ```
 
-The editor menu **SpeakBack/** contains **Apply Project Settings**, **Rebuild Scenes**, **Rebuild Font Assets** and the two build commands. Builds refuse to run if the project settings have drifted from the Phase 1 values.
+The editor menu **SpeakBack/** contains:
+- **Apply Project Settings**
+- **Sync Data**, which copies `data/*.json` into `Assets/_SpeakBack/Data/Source/`
+- **Rebuild Bake-off Recorder Scene**
+- **Rebuild Font Assets**
+- the two build commands
+
+Builds sync data first and refuse to run if the project settings have drifted from the Phase 1 values. The release build also fails if its APK requests INTERNET or contains dev-only code.
+
+**Dev APK:** opens the **Bake-off Recorder** (dev-only, `SPEAKBACK_DEV`), which has a button to the game scene. The release APK contains only `03_Game`.
 
 ## Layout
 

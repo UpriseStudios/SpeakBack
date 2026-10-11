@@ -4,7 +4,8 @@
     "references": [
         "SpeakBack.Runtime",
         "SpeakBack.Core",
-        "UnityEngine.TestRunner"
+        "UnityEngine.TestRunner",
+        "UnityEngine.UI"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

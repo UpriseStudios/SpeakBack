@@ -36,10 +36,19 @@ namespace Uprise.SpeakBack.EditorTools
                     "Project settings drifted (run SpeakBack/Apply Project Settings):\n - " + string.Join("\n - ", problems));
             }
 
+            DataSync.Sync();
+
             var scenes = ReleaseScenes();
+            var leaks = DevScriptsReferencedBy(scenes);
+            if (leaks.Count > 0)
+            {
+                throw new BuildFailedException("Release scenes reference dev-only scripts: " + string.Join(", ", leaks));
+            }
+
             if (development)
             {
-                scenes.Add(DevRecorderScene);
+                // The recorder opens first in dev builds; it has a button to the game scene.
+                scenes.Insert(0, DevRecorderScene);
             }
 
             foreach (var scene in scenes.Where(s => !File.Exists(s)))
@@ -70,15 +79,37 @@ namespace Uprise.SpeakBack.EditorTools
             }
 
             var permissions = ReadApkPermissions(output);
+            var contents = ApkContents.Read(output);
             Debug.Log($"[SpeakBack] Built {output}: {new FileInfo(output).Length / (1024.0 * 1024.0):F1} MB APK, " +
                       $"{summary.totalTime.TotalSeconds:F0} s, scenes: {string.Join(", ", scenes)}, " +
+                      $"packaged scenes: {contents.SceneCount}, dev code shipped: {contents.ContainsDevCode}, " +
                       $"permissions: [{string.Join(", ", permissions)}]");
 
-            if (!development && permissions.Contains(InternetPermissionStripper.InternetPermission))
+            // Check the artefact itself, not just the inputs.
+            if (contents.SceneCount != scenes.Count)
+            {
+                throw new BuildFailedException($"APK contains {contents.SceneCount} scene(s), expected {scenes.Count}.");
+            }
+
+            if (development) return;
+
+            if (permissions.Contains(InternetPermissionStripper.InternetPermission))
             {
                 throw new BuildFailedException("Release APK requests INTERNET; Phase 1 must be offline (Phase 1 §15).");
             }
+
+            if (contents.ContainsDevCode)
+            {
+                throw new BuildFailedException("Release APK contains SpeakBack.Dev code (found in IL2CPP metadata).");
+            }
         }
+
+        /// <summary>Dev-only scripts (under Scripts/Dev) that any of <paramref name="scenePaths"/> depend on, directly or through prefabs.</summary>
+        public static IReadOnlyList<string> DevScriptsReferencedBy(IEnumerable<string> scenePaths) =>
+            AssetDatabase.GetDependencies(scenePaths.ToArray(), true)
+                .Where(path => path.StartsWith("Assets/_SpeakBack/Scripts/Dev/", StringComparison.Ordinal) && path.EndsWith(".cs", StringComparison.Ordinal))
+                .Distinct()
+                .ToList();
 
         /// <summary>Permissions declared by the built APK, read with aapt2 from the editor's bundled Android SDK.</summary>
         private static List<string> ReadApkPermissions(string apkPath)

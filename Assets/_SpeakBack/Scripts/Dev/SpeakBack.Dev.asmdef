@@ -3,7 +3,8 @@
     "rootNamespace": "Uprise.SpeakBack.Dev",
     "references": [
         "SpeakBack.Core",
-        "SpeakBack.Runtime"
+        "SpeakBack.Runtime",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -12,7 +13,7 @@
     "precompiledReferences": [],
     "autoReferenced": false,
     "defineConstraints": [
-        "SPEAKBACK_DEV"
+        "UNITY_EDITOR || SPEAKBACK_DEV"
     ],
     "versionDefines": [],
     "noEngineReferences": false
